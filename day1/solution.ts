@@ -1,12 +1,6 @@
-import path from 'path';
-import fs from 'fs';
+import {readFile} from "../common";
 
-function readFile(fileName: string) {
-    return fs.readFileSync(path.join(__dirname, fileName), 'utf-8');
-}
-
-const sweeps: string[] = readFile('./input.txt')
-    .split("\n")
+const sweeps: string[] = readFile('day1/input.txt')
 
 function solutionOne() {
     const increasingSweeps = sweeps.reduce((acc, current, index, array): number => {
