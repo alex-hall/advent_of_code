@@ -19,6 +19,7 @@
   "homepage": "https://github.com/alex-hall/advent_of_code_2021#readme",
   "devDependencies": {
     "@types/node": "^16.11.11",
+    "jest": "^27.4.3",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.2"
   }
