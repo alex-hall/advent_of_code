@@ -8,11 +8,38 @@ function readFile(fileName: string) {
 const sweeps: string[] = readFile('./input.txt')
     .split("\n")
 
-const increasingSweeps = sweeps.reduce((acc, current, index, array): number => {
-    let nextNumber = Number(array[index + 1]);
-    let currentNumber = Number(current);
+function solutionOne() {
+    const increasingSweeps = sweeps.reduce((acc, current, index, array): number => {
+        let nextNumber = Number(array[index + 1]);
+        let currentNumber = Number(current);
 
-    return currentNumber < nextNumber ? acc + 1 : acc
-}, 0)
+        return currentNumber < nextNumber ? acc + 1 : acc
+    }, 0)
 
-console.log(`Sweeps increased ${increasingSweeps} times.`)
+    console.log(`Solution 1: Sweeps increased ${increasingSweeps} times.`)
+}
+
+solutionOne()
+
+function solutionTwo() {
+    const increasingSweeps = sweeps.reduce((acc, current, index, array): number => {
+        if (array.length < index + 3) {
+            return acc
+        }
+
+        let currentWindow = sumArrayAtIndexes(array, index, index + 3)
+        let nextWindow = sumArrayAtIndexes(array, index + 1, index + 4)
+
+        return currentWindow < nextWindow ? acc + 1 : acc
+    }, 0)
+
+    console.log(`Solution 2: Sweeps increased ${increasingSweeps} times.`)
+}
+
+function sumArrayAtIndexes(array: string[], start: number, end: number): number {
+    return array
+        .slice(start, end)
+        .reduce((prev, curr) => Number(prev) + Number(curr), 0)
+}
+
+solutionTwo()
