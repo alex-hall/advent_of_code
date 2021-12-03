@@ -21,8 +21,8 @@ function solutionTwo() {
             return acc
         }
 
-        let currentWindow = sumArrayAtIndexes(array, index, index + 3)
-        let nextWindow = sumArrayAtIndexes(array, index + 1, index + 4)
+        let currentWindow = sumArrayAtIndexes(array, index, index + 2)
+        let nextWindow = sumArrayAtIndexes(array, index + 1, index + 3)
 
         return currentWindow < nextWindow ? acc + 1 : acc
     }, 0)
@@ -32,7 +32,7 @@ function solutionTwo() {
 
 function sumArrayAtIndexes(array: string[], start: number, end: number): number {
     return array
-        .slice(start, end)
+        .slice(start, end + 1)
         .reduce((prev, curr) => Number(prev) + Number(curr), 0)
 }
 
