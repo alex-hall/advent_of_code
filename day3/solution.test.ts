@@ -1,25 +1,13 @@
 import {findValueToFilterOn, part1, part2, sumValuesAtArrayIndex} from "./solution"
+import {readFile} from "../common";
 
 describe("Part 2", () => {
     describe("Integration Test", () => {
         it("Should calculate the oxygen rating properly", () => {
-            const array = [
-                "00100",
-                "11110",
-                "10110",
-                "10111",
-                "10101",
-                "01111",
-                "00111",
-                "11100",
-                "10000",
-                "11001",
-                "00010",
-                "01010",
-            ]
+            const rawFile = readFile("day3/input.txt")
 
-            let thing = part2(array);
-            expect(thing).toEqual({oxygenRating: "10111", co2Rating: "01010"})
+            let solution = part2(rawFile);
+            expect(solution).toEqual({oxygenRating: "010100101111", co2Rating: "110101100101", solution: 4550283})
         })
     })
 
@@ -32,44 +20,6 @@ describe("Part 2", () => {
                 "0001"
             ]
             expect(sumValuesAtArrayIndex(array, 0)).toEqual(3)
-        })
-    })
-
-    describe("#findValueToFilterOn", () => {
-        it("should return 1", () => {
-            const array = [
-                "1000",
-                "1000",
-                "1000",
-                "0001"
-            ]
-            const foundValue = findValueToFilterOn(array, 0)
-
-            expect(foundValue).toEqual(1)
-        })
-
-        it("should return 0", () => {
-            const array = [
-                "1000",
-                "0000",
-                "0000",
-                "0001"
-            ]
-            const foundValue = findValueToFilterOn(array, 0)
-
-            expect(foundValue).toEqual(0)
-        })
-
-        it("returns -1", () => {
-            const array = [
-                "1000",
-                "1000",
-                "0000",
-                "0001"
-            ]
-            const foundValue = findValueToFilterOn(array, 0)
-
-            expect(foundValue).toEqual(-1)
         })
     })
 })

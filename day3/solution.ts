@@ -65,15 +65,15 @@ const sumValuesAtArrayIndex = (arr: string[], index: number): number => {
     }, 0)
 }
 
-const findValueToFilterOn = (array: string[], position: number) => {
+const findValueToFilterOn = (array: string[], position: number, ratingType: string) => {
     const linesInFile = array.length
     const sumOfValues = sumValuesAtArrayIndex(array, position)
     if (sumOfValues === (linesInFile / 2)) {
-        return -1
+        return ratingType === 'oxygen' ? 1 : 0
     } else if (sumOfValues > (linesInFile / 2)) {
-        return 1
+        return ratingType === 'oxygen' ? 1 : 0
     } else {
-        return 0
+        return ratingType === 'oxygen' ? 0 : 1
     }
 }
 
@@ -85,54 +85,32 @@ function filterFileOnPositionAndValue(rawFile: string[], position: number, value
     return filteredRows
 }
 
-function calculateOxygenRating(array: string[], position: number): string {
-    const value = findValueToFilterOn(array, position)
-
-    let valueToUse = (value === -1) ? 1 : value
-
-    const filteredRows = filterFileOnPositionAndValue(array, position, valueToUse);
+function calculateRating(array: string[], position: number, ratingType: string): string {
+    const value = findValueToFilterOn(array, position, ratingType)
+    const filteredRows = filterFileOnPositionAndValue(array, position, value);
 
     if (filteredRows.length > 1) {
-        return calculateOxygenRating(filteredRows, position += 1)
+        return calculateRating(filteredRows, position += 1, ratingType)
     } else {
         return filteredRows[0]
     }
-
 }
 
-function calculateCO2Rating(array: string[], position: number): string {
-    const value = findValueToFilterOn(array, position)
-    let valueToUse
-
-    if (value === -1){
-        valueToUse = 0
-    } else if(value === 1){
-        valueToUse = 0
-    } else {
-        valueToUse = 1
-    }
-
-    const filteredRows = filterFileOnPositionAndValue(array, position, valueToUse);
-
-    if (filteredRows.length > 1) {
-        return calculateCO2Rating(filteredRows, position += 1)
-    } else {
-        return filteredRows[0]
-    }
-
-}
-
-function part2(rawFile: string[]) {
-    const position = 0
-    const oxygenRating = calculateOxygenRating(rawFile, position);
-    const co2Rating = calculateCO2Rating(rawFile, position);
+function part2(array: string[]) {
+    const oxygenRating = calculateRating(array, 0, 'oxygen');
+    const co2Rating = calculateRating(array, 0, 'co2');
 
     let oxygenRatingDecimal = parseInt(oxygenRating, 2);
     let co2RatingDecimal = parseInt(co2Rating, 2);
+
     console.log(`Oxygen rating is ${oxygenRating}, in decimal that is ${oxygenRatingDecimal}`)
     console.log(`CO2 rating is ${co2Rating}, in decimal that is ${co2RatingDecimal}`)
     console.log(`Solution is: ${oxygenRatingDecimal * co2RatingDecimal}`)
-    return {oxygenRating, co2Rating};
+    return {
+        oxygenRating,
+        co2Rating,
+        solution: oxygenRatingDecimal * co2RatingDecimal
+    };
 }
 
 export {
