@@ -7,5 +7,9 @@ const readFile = (fileName: string) => {
         .split("\n");
 }
 
+const readFileNoSplit = (fileName: string) => {
+    return fs
+        .readFileSync(path.join(__dirname, fileName), 'utf-8')
+}
 
-export {readFile}
+export {readFile, readFileNoSplit}
