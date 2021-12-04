@@ -1,6 +1,14 @@
 import {findValueToFilterOn, part1, part2, sumValuesAtArrayIndex} from "./solution"
 import {readFile} from "../common";
 
+describe("Part 1", () => {
+  describe("Integration Test", () => {
+      const rawFile = readFile("day3/input.txt")
+
+      expect(part1(rawFile)).toEqual({"epsilon": 2795, "gamma": 1300, "solution": 3633500})
+    })
+})
+
 describe("Part 2", () => {
     describe("Integration Test", () => {
         it("Should calculate the oxygen rating properly", () => {

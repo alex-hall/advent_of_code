@@ -6,16 +6,12 @@
 
 // life support rating = Oxygen generator rating * CO2 Scrubber rating
 
-import {readFile} from "../common";
-
 const generateArrayOfLength = (bitDepth: number) => {
     const rows: Array<Number>[] = Array.from({'length': bitDepth}, _ => [])
     return rows;
 }
 
-function part1() {
-    const rawFile = readFile("day3/input.txt")
-
+function part1(rawFile: string[]) {
     const bitDepth = rawFile[0].length
 
     const rows: Array<Number>[] = generateArrayOfLength(12)
@@ -48,29 +44,29 @@ function part1() {
     const flippedByteString = flipAllBits(gamma).join("");
     const flippedByteStringToDecimal = parseInt(flippedByteString, 2);
 
-    console.log(`Epsilon values for array are:${flippedByteString}. As decimal: ${flippedByteStringToDecimal}`)
+    console.log(`Epsilon values for array are:${flippedByteString}. As decimal: ${byteStringToDecimal}`)
 
     console.log(`Fnal value is ${flippedByteStringToDecimal * byteStringToDecimal}`)
+
+    return {
+        gamma: byteStringToDecimal,
+        epsilon: flippedByteStringToDecimal,
+        solution: flippedByteStringToDecimal * byteStringToDecimal
+    }
 }
 
-part1();
-
 const sumValuesAtArrayIndex = (arr: string[], index: number): number => {
-    return arr.reduce((acc, curr): number => {
-        const byteArray = [...curr]
-
-        acc += Number(byteArray[index])
-
-        return acc
+    return arr.reduce((acc, [...curr]): number => {
+        return acc += Number(curr[index])
     }, 0)
 }
 
 const findValueToFilterOn = (array: string[], position: number, ratingType: string) => {
-    const linesInFile = array.length
+    let midpoint = array.length / 2;
     const sumOfValues = sumValuesAtArrayIndex(array, position)
-    if (sumOfValues === (linesInFile / 2)) {
+    if (sumOfValues === midpoint) {
         return ratingType === 'oxygen' ? 1 : 0
-    } else if (sumOfValues > (linesInFile / 2)) {
+    } else if (sumOfValues > midpoint) {
         return ratingType === 'oxygen' ? 1 : 0
     } else {
         return ratingType === 'oxygen' ? 0 : 1
