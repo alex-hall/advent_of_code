@@ -13,6 +13,6 @@ describe("part1", () => {
 
         console.log("Hello")
 
-        expect(part1(numbers,rawBoardData)).toEqual("hello")
+        expect(part1(numbers,rawBoardData)).toEqual({"solution": 60368, "sumOfWinningBoard": 784, "winningNumber": 77})
     })
 })
