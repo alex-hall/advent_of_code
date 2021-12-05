@@ -8,11 +8,17 @@ function findWinningRow(board: (number | null)[][]) {
 }
 
 function findWinningColumn(board: (number | null)[][]) {
-    const columns = board.map((boardRow) => boardRow[0])
-    const remainingNumber = columns.filter(number => number !== null)
-    if (remainingNumber.length === 0) {
-        return true
-    }
+    const columnLength = board[0].length
+    let winnerFound = false
+    const banana = [...Array<number>(columnLength)].find((_, columnIndex) => {
+        const columns = board.map((boardRow) => boardRow[columnIndex])
+        const remainingNumber = columns.filter(number => number !== null)
+        if (remainingNumber.length === 0) {
+            winnerFound = true
+            return true
+        }
+    })
+    return winnerFound
 }
 
 function checkForWinner(boards: (number | null)[][][]): (number | null)[][] | undefined {
@@ -21,41 +27,76 @@ function checkForWinner(boards: (number | null)[][][]): (number | null)[][] | un
     })
 }
 
-const part1 = (numbers: number[], rawBoardData: string): object => {
+function rejectWinner(boards: (number | null)[][][]): (number | null)[][][] {
+    return boards.filter((board, index) => {
+        return !(findWinningRow(board) || findWinningColumn(board));
+    })
+}
 
+function markNumberOnBoard(boards: (number | null)[][][], number: number) {
+    return boards.map(board => {
+        return board.map((boardRow: (number | null)[]) => {
+            const hit = boardRow.indexOf(number);
+            if (hit !== -1) {
+                boardRow[hit] = null
+            }
+            return boardRow
+        })
+    });
+}
+
+function sumBoard(winningBoard: (number | null)[][]) {
+    return winningBoard.reduce((acc, rows) => {
+        const summedRow = rows.reduce((acc, curr) => {
+            if (curr !== null) {
+                acc! += curr
+            }
+            return acc
+        }, 0)
+
+        acc += summedRow!
+
+        return acc
+    }, 0);
+}
+
+const part2 = (numbers: number[], rawBoardData: string): object => {
+    let boards = uglyParseBoardData(rawBoardData)
+
+    let sumOfLosingBoard = 0
+
+    const winningNumber = numbers.find(number => {
+        boards = markNumberOnBoard(boards, number)
+
+        if (number === 34 || number === 60 || number === 74) {
+            console.log("STop here")
+        }
+
+        const remainingBoards = rejectWinner(boards)
+
+        if (boards.length > 1) {
+            boards = remainingBoards
+        } else {
+            sumOfLosingBoard = sumBoard(boards[0])
+            return true
+        }
+    })
+    return {winningNumber, sumOfLosingBoard, solution: (winningNumber! * sumOfLosingBoard)}
+
+}
+
+const part1 = (numbers: number[], rawBoardData: string): object => {
     let boards = uglyParseBoardData(rawBoardData)
 
     let sumOfWinningBoard: number = 0
 
     const winningNumber = numbers.find(number => {
-        if (number === 24) {
-            console.log("STop here")
-        }
-        boards = boards.map(board => {
-            return board.map((boardRow: (number | null)[]) => {
-                const hit = boardRow.indexOf(number);
-                if (hit !== -1) {
-                    boardRow[hit] = null
-                }
-                return boardRow
-            })
-        })
+        boards = markNumberOnBoard(boards, number)
 
         const winningBoard = checkForWinner(boards)
 
         if (winningBoard) {
-            sumOfWinningBoard = winningBoard.reduce((acc, rows) => {
-                const summedRow = rows.reduce((acc, curr) => {
-                    if (curr !== null) {
-                        acc! += curr
-                    }
-                    return acc
-                }, 0)
-
-                acc += summedRow!
-
-                return acc
-            }, 0)
+            sumOfWinningBoard = sumBoard(winningBoard)
 
             return true
         }
@@ -93,4 +134,4 @@ const uglyParseBoardData = (rawBoardData: string): (number | null)[][][] => {
 }
 
 
-export {part1}
+export {part1, part2}
