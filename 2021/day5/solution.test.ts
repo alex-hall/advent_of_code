@@ -5,6 +5,7 @@ describe("part1", () => {
     it("Should work", () => {
 
         const rawFile = readFile("day5/numbers.txt")
+
         expect(part1(rawFile) ).toEqual({solution: 17193})
     })
 })

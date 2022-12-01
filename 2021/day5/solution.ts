@@ -12,7 +12,6 @@ const plotHorizontalLine = (coordinateMatrix: number[][], y1: number, x1: number
     return coordinateMatrix
 }
 
-
 function findStartingPoints(pointOne: number, pointTwo: number) {
     return pointOne < pointTwo ? {start: pointOne, end: pointTwo} : {start: pointTwo, end: pointOne}
 }
@@ -20,7 +19,6 @@ function findStartingPoints(pointOne: number, pointTwo: number) {
 function isDiagonal(x1: number, y1: number, x2: number, y2: number) {
     return Math.abs(x1 - x2) === Math.abs(y1 - y2)
 }
-
 
 function diagonalLine(coordinateMatrix: number[][], x1: number, x2: number, y1: number, y2: number) {
     let keepGoing = true
@@ -47,7 +45,6 @@ function diagonalLine(coordinateMatrix: number[][], x1: number, x2: number, y1: 
             keepGoing = false
         }
     } while (keepGoing)
-
 
     return coordinateMatrix
 }
