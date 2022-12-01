@@ -1,4 +1,4 @@
-import {readFileNoSplit} from "../common";
+import {readFileNoSplit} from "common";
 const {part1, part2} = require("../day4/solution");
 
 describe("part1", () => {

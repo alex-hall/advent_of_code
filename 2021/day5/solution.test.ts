@@ -1,4 +1,4 @@
-import {readFile} from "../common";
+import {readFile} from "common";
 const {part1} = require("../day5/solution");
 
 describe("part1", () => {

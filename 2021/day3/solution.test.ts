@@ -1,5 +1,5 @@
 import {findValueToFilterOn, part1, part2, sumValuesAtArrayIndex} from "./solution"
-import {readFile} from "../common";
+import {readFile} from "common";
 
 describe("Part 1", () => {
   describe("Integration Test", () => {

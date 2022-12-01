@@ -1,4 +1,4 @@
-import {readFile} from "../common";
+import {readFile} from "common";
 
 
 function part1() {

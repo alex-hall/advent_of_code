@@ -1,4 +1,4 @@
-import {readFile} from "../common";
+import {readFile} from "common";
 
 const sweeps: string[] = readFile('day1/input.txt')
 
