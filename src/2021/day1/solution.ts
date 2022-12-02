@@ -9,8 +9,6 @@ function solutionOne() {
 
         return currentNumber < nextNumber ? acc + 1 : acc
     }, 0)
-
-    console.log(`Solution 1: Sweeps increased ${increasingSweeps} times.`)
 }
 
 solutionOne()
@@ -26,8 +24,6 @@ function solutionTwo() {
 
         return currentWindow < nextWindow ? acc + 1 : acc
     }, 0)
-
-    console.log(`Solution 2: Sweeps increased ${increasingSweeps} times.`)
 }
 
 function sumArrayAtIndexes(array: string[], start: number, end: number): number {

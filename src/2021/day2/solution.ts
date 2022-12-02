@@ -21,8 +21,6 @@ function part1() {
 
         return acc
     }, [0, 0])
-
-    console.log(`Final coordinates are: ${coordinates}. Solution is ${coordinates[0] * coordinates[1]}`)
 }
 
 part1()
@@ -48,8 +46,6 @@ function part2() {
 
         return acc
     }, [0, 0, 0])
-
-    console.log(`Final coordinates are: ${coordinates}. Solution is ${coordinates[0] * coordinates[1]}`)
 }
 
 part2()

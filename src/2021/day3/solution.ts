@@ -39,14 +39,8 @@ function part1(rawFile: string[]) {
     const byteString = gamma.join("");
     const byteStringToDecimal = parseInt(byteString, 2);
 
-    console.log(`Gamma values for array are: ${byteString}, as decimal ${byteStringToDecimal}`)
-
     const flippedByteString = flipAllBits(gamma).join("");
     const flippedByteStringToDecimal = parseInt(flippedByteString, 2);
-
-    console.log(`Epsilon values for array are:${flippedByteString}. As decimal: ${byteStringToDecimal}`)
-
-    console.log(`Fnal value is ${flippedByteStringToDecimal * byteStringToDecimal}`)
 
     return {
         gamma: byteStringToDecimal,
@@ -99,10 +93,7 @@ function part2(array: string[]) {
     let oxygenRatingDecimal = parseInt(oxygenRating, 2);
     let co2RatingDecimal = parseInt(co2Rating, 2);
 
-    console.log(`Oxygen rating is ${oxygenRating}, in decimal that is ${oxygenRatingDecimal}`)
-    console.log(`CO2 rating is ${co2Rating}, in decimal that is ${co2RatingDecimal}`)
-    console.log(`Solution is: ${oxygenRatingDecimal * co2RatingDecimal}`)
-    return {
+     return {
         oxygenRating,
         co2Rating,
         solution: oxygenRatingDecimal * co2RatingDecimal

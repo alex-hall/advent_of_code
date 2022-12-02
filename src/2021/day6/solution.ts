@@ -19,8 +19,6 @@ const part1 = (rawFile: string[], numIterations: number): object => {
         for(let i = 0; i < newFishToAdd; i++){
             lanternFish.push(8)
         }
-
-        console.log(`Lantern Fish count after day ${i + 1}: Length is: ${lanternFish.length}`)
     }
 
     return {solution: lanternFish.length}

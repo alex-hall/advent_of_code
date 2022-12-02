@@ -69,7 +69,7 @@ const part2 = (numbers: number[], rawBoardData: string): object => {
         boards = markNumberOnBoard(boards, number)
 
         if (number === 34 || number === 60 || number === 74) {
-            console.log("STop here")
+            console.log("Stop here")
         }
 
         const remainingBoards = rejectWinner(boards)
