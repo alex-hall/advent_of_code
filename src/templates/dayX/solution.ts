@@ -1,3 +1,7 @@
-import {readFile} from "common";
+const part1 = () => {
+    return true
+}
 
-const file: string[] = readFile('dayX/input.txt')
+export {
+    part1
+}
