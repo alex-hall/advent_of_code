@@ -1,12 +1,11 @@
 import {part1} from "./solution"
 import {readFile} from "common";
 describe("Part 1", () => {
-    describe("Integration Test", () => {
-        it("Does a thing", () => {
-            const file = readFile("2022/day1/input.txt")
+    describe("Sample solution", () => {
+        it("returns the highest calorie count", () => {
+            const file = readFile("2022/day1/sample.txt")
 
-            expect(file).toEqual([""])
-            expect(part1()).toEqual(true)
+            expect(part1(file)).toEqual(24000)
         })
     })
 })
