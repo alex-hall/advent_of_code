@@ -1,5 +1,6 @@
 import {part1, part2} from "./solution"
 import {readFile} from "common";
+
 describe("Part 1", () => {
     describe("Sample solution", () => {
         it("returns the highest calorie count", () => {
@@ -20,14 +21,19 @@ describe("Part 1", () => {
 
 describe("Part 2", () => {
     describe("Sample solution", () => {
-        const file = readFile("2022/day1/sample.txt")
+        it("returns a sum of the 3 highest calorie counts", () => {
+            const file = readFile("2022/day1/sample.txt")
 
-        expect(part2(file)).toEqual(45000)
+            expect(part2(file)).toEqual(45000)
+        })
     })
 
     describe("Puzzle solution", () => {
-        const file = readFile("2022/day1/input.txt")
+        it("returns a sum of the 3 highest calorie counts", () => {
 
-        expect(part2(file)).toEqual(211447)
+            const file = readFile("2022/day1/input.txt")
+
+            expect(part2(file)).toEqual(211447)
+        })
     })
 })
