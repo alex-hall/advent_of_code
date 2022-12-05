@@ -1,4 +1,5 @@
-const getSummedCalorieByElf = (calorieList: string[], cursor: number) => {
+const getSummedCalorieByElf = (calorieList: string[]) => {
+    let cursor: number = 0
     return calorieList.reduce((acc, curr): number[] => {
 
         if (curr.length) {
@@ -12,18 +13,16 @@ const getSummedCalorieByElf = (calorieList: string[], cursor: number) => {
 }
 
 const part1 = (calorieList: string[]) : number => {
-    let cursor = 0
-    const summedCalorieByElf: number[] = getSummedCalorieByElf(calorieList, cursor)
+    const summedCalorieByElf: number[] = getSummedCalorieByElf(calorieList)
 
     return Math.max(...summedCalorieByElf)
 }
 
 const part2 = (calorieList: string[]) : number => {
-    let cursor = 0
-    const summedCalorieByElf: number[] = getSummedCalorieByElf(calorieList, cursor)
+    const summedCalorieByElf: number[] = getSummedCalorieByElf(calorieList)
 
     const sortedCaloriesByElf = summedCalorieByElf.sort((a,b) => b-a);
-    
+
     return sortedCaloriesByElf[0] +
         sortedCaloriesByElf[1] +
         sortedCaloriesByElf[2]
