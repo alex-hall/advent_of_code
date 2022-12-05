@@ -1,12 +1,41 @@
-import {part1} from "./solution"
+import {part1, part2} from "./solution"
 import {readFile} from "common";
+
 describe("Part 1", () => {
-    describe("Integration Test", () => {
-        it("Does a thing", () => {
-            const file = readFile("templates/dayX/input.txt")
+    describe("Sample Input", () => {
+        it("Does a Christmas-y thing", () => {
+            const file = readFile("templates/dayX/sample.txt")
 
             expect(file).toEqual([""])
             expect(part1()).toEqual(true)
+        })
+    })
+    describe("Puzzle Input", () => {
+        it("Does a Christmas-y thing", () => {
+            const file = readFile("templates/dayX/sample.txt")
+
+            expect(file).toEqual([""])
+            expect(part1()).toEqual(true)
+        })
+    })
+})
+
+describe("Part 2", () => {
+    describe("Sample Input", () => {
+        it("Does a Christmas-y thing", () => {
+            const file = readFile("templates/dayX/input.txt")
+
+            expect(file).toEqual([""])
+            expect(part2()).toEqual(true)
+        })
+    })
+
+    describe("Puzzle Input", () => {
+        it("Does a Christmas-y thing", () => {
+            const file = readFile("templates/dayX/input.txt")
+
+            expect(file).toEqual([""])
+            expect(part2()).toEqual(true)
         })
     })
 })

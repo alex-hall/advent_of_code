@@ -20,8 +20,8 @@ const part1 = (calorieList: string[]) : number => {
 
 const part2 = (calorieList: string[]) : number => {
     const summedCalorieByElf: number[] = getSummedCalorieByElf(calorieList)
-
-    const sortedCaloriesByElf = summedCalorieByElf.sort((a,b) => b-a);
+    let sortHighToLow = (a: number, b: number) => b-a;
+    const sortedCaloriesByElf = summedCalorieByElf.sort(sortHighToLow);
 
     return sortedCaloriesByElf[0] +
         sortedCaloriesByElf[1] +
