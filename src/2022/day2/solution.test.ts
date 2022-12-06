@@ -21,19 +21,17 @@ describe("Part 1", () => {
 describe("Part 2", () => {
     describe("Sample Input", () => {
         it("Does a Christmas-y thing", () => {
-            const file = readFile("2022/day2/input.txt")
+            const file = readFile("2022/day2/sample.txt")
 
-            expect(file).toEqual([""])
-            expect(part2()).toEqual(true)
+            expect(part2(file)).toEqual(12)
         })
     })
 
     describe("Puzzle Input", () => {
         it("Does a Christmas-y thing", () => {
-            const file = readFile("templates/day2/input.txt")
+            const file = readFile("2022/day2/input.txt")
 
-            expect(file).toEqual([""])
-            expect(part2()).toEqual(true)
+            expect(part2(file)).toEqual(true)
         })
     })
 })

@@ -49,8 +49,80 @@ const part1 = (file: string[]): number => {
     return scoreSum
 }
 
-const part2 = () => {
-    return true
+const part2 = (file: string[]) => {
+    let scoreSum = 0
+
+    const rpsHeirarchy = [
+        "A", // Rock : Rock
+        "B", // Paper : Paper
+        "C" // Scissors : Scissors
+    ]
+
+    /*
+
+    Intended Result:
+    X === Lose
+    Y === Draw
+    Z === Win
+
+     */
+
+    file.map(row => {
+        const [opponentThrow, expectedResult] = row.split(' ')
+
+        const circularLinkedList = new BadCircularLinkedList(rpsHeirarchy)
+
+        let respondingThrow
+
+        const getScore = (respondingThrow: string) => rpsHeirarchy.indexOf(respondingThrow) + 1;
+
+        switch(expectedResult){
+            case "X":
+                respondingThrow = circularLinkedList.previous(opponentThrow)
+                scoreSum += getScore(respondingThrow)
+                break
+            case "Y":
+                respondingThrow = opponentThrow
+                scoreSum += getScore(respondingThrow) + 3
+                break
+            case "Z":
+                respondingThrow = circularLinkedList.next(opponentThrow)
+                scoreSum += getScore(respondingThrow) + 6
+                break
+        }
+    })
+
+    return scoreSum
+}
+
+class BadCircularLinkedList{
+    private data
+    private length
+
+    constructor(data: string[]){
+        this.data = data
+        this.length = this.data.length
+    }
+
+    next(element: string) {
+        const index = this.data.indexOf(element)
+
+        if((this.length - 1) === index){
+            return this.data[0]
+        }else{
+            return this.data[index+1]
+        }
+    }
+
+    previous(element: string){
+        const index = this.data.indexOf(element)
+
+        if(index === 0){
+            return this.data[this.length - 1]
+        }else{
+            return this.data[index-1]
+        }
+    }
 }
 
 export {
