@@ -20,18 +20,18 @@ describe("Part 1", () => {
 
 describe("Part 2", () => {
     describe("Sample Input", () => {
-        it("Does a Christmas-y thing", () => {
+        it("Finds the common element across 3 rucksacks, and sums the priority of all of those elements", () => {
             const file = readFile("2022/day3/sample.txt")
 
-            expect(part2(file)).toEqual(true)
+            expect(part2(file)).toEqual(70)
         })
     })
 
     describe("Puzzle Input", () => {
-        it("Does a Christmas-y thing", () => {
+        it("Finds the common element across 3 rucksacks, and sums the priority of all of those elements", () => {
             const file = readFile("2022/day3/input.txt")
 
-            expect(part2(file)).toEqual(true)
+            expect(part2(file)).toEqual(2585)
         })
     })
 })
