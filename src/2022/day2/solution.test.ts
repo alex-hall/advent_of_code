@@ -6,16 +6,14 @@ describe("Part 1", () => {
         it("returns the score using the strategy guide", () => {
             const file = readFile("2022/day2/sample.txt")
 
-            expect(file).toEqual([""])
-            expect(part1()).toEqual(true)
+            expect(part1(file)).toEqual(15)
         })
     })
     describe("Puzzle Input", () => {
         it("returns the score using the strategy guide", () => {
-            const file = readFile("2022/day2/sample.txt")
+            const file = readFile("2022/day2/input.txt")
 
-            expect(file).toEqual([""])
-            expect(part1()).toEqual(true)
+            expect(part1(file)).toEqual(13446)
         })
     })
 })
