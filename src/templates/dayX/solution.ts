@@ -1,8 +1,8 @@
-const part1 = () => {
+const part1 = (file: string[]) => {
     return true
 }
 
-const part2 = () => {
+const part2 = (file: string[]) => {
     return true
 }
 
